@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hari Jadian Kita - Sanubari Hulu & Syakira</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            rosewood: '#581825',
+            romantic: {
+              50: '#fff1f2',
+              100: '#ffe4e6',
+              200: '#fecdd3',
+              300: '#fda4af',
+              400: '#fb7185',
+              500: '#f43f5e',
+              600: '#e11d48',
+              700: '#be123c',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Playfair Display"', 'serif'],
+            cursive: ['"Dancing Script"', 'cursive']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Smooth Scrolling & Custom Scrollbar */
+    html {
+      scroll-behavior: smooth;
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #fff1f2;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #fda4af;
+      border-radius: 4px;
+    }
+
+    /* Floating Hearts Animation Background */
+    .heart-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .floating-heart {
+      position: absolute;
+      bottom: -10px;
+      color: rgba(244, 63, 94, 0.35);
+      animation: floatUp 8s linear infinite;
+      user-select: none;
+    }
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg) scale(0.8);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-105vh) rotate(360deg) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    /* Glowing Pink Text for Syakira */
+    .glow-pink {
+      color: #ff1493;
+      text-shadow: 0 0 12px rgba(255, 20, 147, 0.5), 0 0 24px rgba(255, 105, 180, 0.3);
+    }
+
+    /* Card Flip Effects */
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+    .transform-style-3d {
+      transform-style: preserve-3d;
+    }
+    .backface-hidden {
+      backface-visibility: hidden;
+    }
+    .rotate-y-180 {
+      transform: rotateY(180deg);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-romantic-50 via-pink-50 to-rose-100 text-gray-800 font-sans antialiased relative overflow-x-hidden">
+
+  <!-- Background Animasi Hati -->
+  <div id="heartContainer" class="heart-bg"></div>
+
+  <!-- Tag Audio Pemutar Musik (Ganti musik.mp3 dengan nama file atau URL musik kamu) -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="senang.mp3" type="audio/mpeg">
+    Browser kamu tidak mendukung pemutar audio.
+  </audio>
+
+  <!-- Pemutar Musik Latar Romantis (Floating Button) -->
+  <div class="fixed top-5 right-5 z-50">
+    <button id="musicBtn" onclick="toggleMusic()" class="flex items-center gap-2 bg-white/80 backdrop-blur-md px-4 py-2.5 rounded-full shadow-lg hover:shadow-xl border border-pink-200 transition-all text-romantic-600 font-medium text-sm hover:scale-105 active:scale-95">
+      <i id="musicIcon" data-lucide="music" class="w-4 h-4 animate-pulse"></i>
+      <span id="musicText">Putar Musik Romantis</span>
+    </button>
+  </div>
+
+  <!-- Header Navigasi -->
+  <header class="fixed top-5 left-5 z-50 hidden md:flex items-center gap-2 bg-white/70 backdrop-blur-md px-4 py-2 rounded-full border border-pink-100 shadow-sm text-xs text-pink-700 font-medium">
+    <i data-lucide="heart" class="w-4 h-4 fill-romantic-500 text-romantic-500"></i>
+    <span>Sanubari Hulu ❤️ Syakira</span>
+  </header>
+
+  <!-- Container Utama (Bab 1 - 9) -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 py-8 space-y-20 relative z-10">
+
+    <!-- COVER / PEMBUKA -->
+    <section class="min-h-[85vh] flex flex-col justify-center items-center text-center pt-10">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-100 text-pink-700 text-sm font-semibold mb-6 animate-bounce">
+        <i data-lucide="sparkles" class="w-4 h-4"></i> Happy Anniversary Day
+      </div>
+      <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold text-gray-900 leading-tight mb-4">
+        Selamat Hari Jadian,<br>
+        <span class="font-cursive text-5xl sm:text-7xl md:text-8xl">Sayangku <span class="glow-pink font-bold">Syakira</span> ❤️</span>
+      </h1>
+      <p class="text-base sm:text-lg text-gray-600 max-w-xl mb-10 leading-relaxed">
+        Setiap detik bersamamu adalah momen paling berharga dalam hidupku. Terima kasih sudah mengisi hariku dengan begitu banyak cinta dan kebahagiaan.
+      </p>
+      <a href="#bab1" class="group flex items-center gap-3 bg-gradient-to-r from-romantic-500 to-pink-500 hover:from-romantic-600 hover:to-pink-600 text-white font-semibold px-8 py-4 rounded-full shadow-lg shadow-romantic-200 hover:shadow-xl hover:scale-105 transition-all duration-300">
+        <span>Buka Cerita Cinta Kita</span>
+        <i data-lucide="arrow-down" class="w-5 h-5 group-hover:translate-y-1 transition-transform"></i>
+      </a>
+    </section>
+
+    <!-- BAB 1: PENYETAN BERSAMA KARYAWAN -->
+    <section id="bab1" class="scroll-mt-10 bg-white/80 backdrop-blur-lg rounded-3xl p-6 sm:p-10 shadow-xl border border-pink-100">
+      <div class="flex items-center gap-3 text-romantic-600 font-semibold mb-2">
+        <span class="text-sm bg-pink-100 px-3 py-1 rounded-full">Bab 01</span>
+        <i data-lucide="users" class="w-4 h-4"></i> Momen Kebersamaan
+      </div>
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Penyetan Bersama Karyawan</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="space-y-4 text-gray-600 leading-relaxed">
+          <p>
+            Momen penyetan kemarin bersama para karyawan jadi salah satu kenangan yang berkesan dalam perjalanan kita. Di tengah kehangatan dan keseruan acara bersama tim, obrolan dan kebersamaan kita terasa semakin dekat dan spesial.
+          </p>
+          <p class="italic bg-pink-50/80 p-4 rounded-2xl border-l-4 border-romantic-400 text-gray-700">
+            "Di antara keseruan dan kehangatan momen penyetan bersama karyawan, hatiku semakin yakin menemukan tempat terbaik untuk pulang."
+          </p>
+          <p>
+            Walaupun dikelilingi keramaian suasana makan bersama seluruh tim, kehangatan hadirmu membuat momen kerja dan kebersamaan itu terasa penuh makna bagiku.
+          </p>
+        </div>
+        <div class="relative group">
+          <div class="absolute -inset-1 bg-gradient-to-r from-pink-400 to-romantic-500 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-500"></div>
+          <div class="relative bg-pink-100 rounded-2xl p-6 text-center space-y-4 border border-pink-200">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto text-romantic-500 shadow-md">
+              <i data-lucide="utensils" class="w-8 h-8"></i>
+            </div>
+            <h3 class="font-serif font-bold text-xl text-gray-800">Kenangan Acara Tim</h3>
+            <p class="text-sm text-gray-600 italic">"Momen penyetan bersama karyawan yang mengukir rasa nyaman dan kedekatan."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BAB 2: MOMEN BERKESAN -->
+    <section id="bab2" class="scroll-mt-10">
+      <div class="text-center mb-10">
+        <span class="text-sm bg-pink-100 text-romantic-600 font-semibold px-3 py-1 rounded-full">Bab 02</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-gray-900 mt-2">Momen Berkesan</h2>
+        <p class="text-gray-600 mt-2 text-sm sm:text-base">Sentuh kartu untuk melihat momen istimewa kita 💕</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <div class="h-60 perspective-1000 cursor-pointer group" onclick="flipCard(this)">
+          <div class="relative w-full h-full duration-500 transform-style-3d transition-transform rounded-2xl shadow-lg group-hover:shadow-xl">
+            <div class="absolute w-full h-full bg-white rounded-2xl p-6 flex flex-col justify-center items-center text-center border border-pink-100 backface-hidden">
+              <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center text-romantic-500 mb-4">
+                <i data-lucide="smile" class="w-6 h-6"></i>
+              </div>
+              <h3 class="font-serif font-bold text-lg text-gray-800">Senyum Syakira</h3>
+              <p class="text-xs text-pink-500 mt-2">Klik untuk membalik ✨</p>
+            </div>
+            <div class="absolute w-full h-full bg-gradient-to-br from-romantic-500 to-pink-600 text-white rounded-2xl p-6 flex flex-col justify-center items-center text-center rotate-y-180 backface-hidden">
+              <p class="text-sm leading-relaxed">
+                Senyuman manis Syakira selalu berhasil menghapus semua rasa lelah dan membuat hariku jadi jauh lebih berwarna.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="h-60 perspective-1000 cursor-pointer group" onclick="flipCard(this)">
+          <div class="relative w-full h-full duration-500 transform-style-3d transition-transform rounded-2xl shadow-lg group-hover:shadow-xl">
+            <div class="absolute w-full h-full bg-white rounded-2xl p-6 flex flex-col justify-center items-center text-center border border-pink-100 backface-hidden">
+              <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center text-romantic-500 mb-4">
+                <i data-lucide="map-pin" class="w-6 h-6"></i>
+              </div>
+              <h3 class="font-serif font-bold text-lg text-gray-800">Jalan Berdua</h3>
+              <p class="text-xs text-pink-500 mt-2">Klik untuk membalik ✨</p>
+            </div>
+            <div class="absolute w-full h-full bg-gradient-to-br from-romantic-500 to-pink-600 text-white rounded-2xl p-6 flex flex-col justify-center items-center text-center rotate-y-180 backface-hidden">
+              <p class="text-sm leading-relaxed">
+                Setiap tempat yang kita datangi bersama terasa jauh lebih menyenangkan dan penuh kehangatan.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="h-60 perspective-1000 cursor-pointer group" onclick="flipCard(this)">
+          <div class="relative w-full h-full duration-500 transform-style-3d transition-transform rounded-2xl shadow-lg group-hover:shadow-xl">
+            <div class="absolute w-full h-full bg-white rounded-2xl p-6 flex flex-col justify-center items-center text-center border border-pink-100 backface-hidden">
+              <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center text-romantic-500 mb-4">
+                <i data-lucide="sparkles" class="w-6 h-6"></i>
+              </div>
+              <h3 class="font-serif font-bold text-lg text-gray-800">Perhatian Tulus</h3>
+              <p class="text-xs text-pink-500 mt-2">Klik untuk membalik ✨</p>
+            </div>
+            <div class="absolute w-full h-full bg-gradient-to-br from-romantic-500 to-pink-600 text-white rounded-2xl p-6 flex flex-col justify-center items-center text-center rotate-y-180 backface-hidden">
+              <p class="text-sm leading-relaxed">
+                Perhatian kecil dan kebaikan hatimu membuatku selalu bersyukur memilikimu setiap hari.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BAB 3: GALERI FOTO KENANGAN -->
+    <section id="bab3" class="scroll-mt-10 bg-white/80 backdrop-blur-lg rounded-3xl p-6 sm:p-10 shadow-xl border border-pink-100">
+      <div class="text-center mb-8">
+        <span class="text-sm bg-pink-100 text-romantic-600 font-semibold px-3 py-1 rounded-full">Bab 03</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-gray-900 mt-2">Galeri Foto Kenangan</h2>
+        <p class="text-gray-600 mt-2 text-sm sm:text-base">Foto manis kebersamaan Sanubari Hulu & Syakira ❤️</p>
+        
+        <!-- Tombol Upload Foto Langsung -->
+        <div class="mt-4">
+          <label class="inline-flex items-center gap-2 bg-pink-50 hover:bg-pink-100 border border-pink-200 text-romantic-600 text-xs sm:text-sm font-semibold px-4 py-2 rounded-full cursor-pointer transition-all shadow-sm">
+            <i data-lucide="camera" class="w-4 h-4"></i>
+            <span>Upload Foto dari HP / Komputer</span>
+            <input type="file" accept="image/*" multiple onchange="uploadUserPhotos(event)" class="hidden">
+          </label>
+        </div>
+      </div>
+
+      <!-- GRID KODINGAN FOTO POLAROID -->
+      <div id="photoGallery" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        
+        <!-- FOTO 1 -->
+        <div class="bg-white p-4 pb-6 rounded-2xl shadow-lg border border-pink-100 rotate-[-2deg] hover:rotate-0 hover:scale-105 transition-all duration-300 group cursor-pointer" onclick="openPhotoModal(this)">
+          <div class="relative overflow-hidden rounded-xl aspect-[4/5] bg-pink-100 mb-4">
+            <img src="foto.jpeg" alt="Senyum Indah Syakira" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&auto=format&fit=crop&q=80'" />
+            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="text-white text-xs bg-black/50 px-3 py-1.5 rounded-full backdrop-blur-sm">Lihat Full 🔍</span>
+            </div>
+          </div>
+          <p class="font-cursive text-xl text-center text-gray-800 font-semibold photo-caption">Senyum Indahmu 💕</p>
+        </div>
+
+        <!-- FOTO 2 -->
+        <div class="bg-white p-4 pb-6 rounded-2xl shadow-lg border border-pink-100 rotate-[2deg] hover:rotate-0 hover:scale-105 transition-all duration-300 group cursor-pointer" onclick="openPhotoModal(this)">
+          <div class="relative overflow-hidden rounded-xl aspect-[4/5] bg-pink-100 mb-4">
+            <img src="foto2.jpeg" alt="Momen Penyetan Bersama" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&auto=format&fit=crop&q=80'" />
+            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="text-white text-xs bg-black/50 px-3 py-1.5 rounded-full backdrop-blur-sm">Lihat Full 🔍</span>
+            </div>
+          </div>
+          <p class="font-cursive text-xl text-center text-gray-800 font-semibold photo-caption">Momen Kebersamaan ✨</p>
+        </div>
+
+        <!-- FOTO 3 -->
+        <div class="bg-white p-4 pb-6 rounded-2xl shadow-lg border border-pink-100 rotate-[-1deg] hover:rotate-0 hover:scale-105 transition-all duration-300 group cursor-pointer" onclick="openPhotoModal(this)">
+          <div class="relative overflow-hidden rounded-xl aspect-[4/5] bg-pink-100 mb-4">
+            <img src="foto3.jpeg" alt="Kebahagiaan Berdua" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&auto=format&fit=crop&q=80'" />
+            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="text-white text-xs bg-black/50 px-3 py-1.5 rounded-full backdrop-blur-sm">Lihat Full 🔍</span>
+            </div>
+          </div>
+          <p class="font-cursive text-xl text-center text-gray-800 font-semibold photo-caption">Selalu Bahagia ❤️</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BAB 4: TAWA & CANDA -->
+    <section id="bab4" class="scroll-mt-10 bg-white/80 backdrop-blur-lg rounded-3xl p-6 sm:p-10 shadow-xl border border-pink-100">
+      <div class="flex items-center gap-3 text-romantic-600 font-semibold mb-2">
+        <span class="text-sm bg-pink-100 px-3 py-1 rounded-full">Bab 04</span>
+        <i data-lucide="laugh" class="w-4 h-4"></i> Kebersamaan
+      </div>
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Tawa & Canda</h2>
+      <p class="text-gray-600 leading-relaxed">
+        Bersamamu, hal-hal sederhana selalu berubah jadi penuh tawa. Dari lelucon random, obrolan lucu di pesan singkat, sampai tingkah konyol kita berdua. Tawa bersamamu adalah melodi paling menyenangkan yang ingin selalu kudengar.
+      </p>
+    </section>
+
+    <!-- BAB 5: CERITA KITA & DURASI HARI -->
+    <section id="bab5" class="scroll-mt-10 text-center bg-gradient-to-r from-romantic-500 to-pink-600 text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+      <div class="relative z-10">
+        <span class="text-xs bg-white/20 backdrop-blur-md px-3 py-1 rounded-full font-semibold uppercase tracking-wider">Bab 05</span>
+        <h2 class="font-serif text-3xl sm:text-5xl font-bold mt-3 mb-2">Cerita Kita</h2>
+        <p class="text-pink-100 text-sm sm:text-base max-w-md mx-auto mb-8">Hitungan waktu indah yang telah kita lalui bersama:</p>
+
+        <!-- Dynamic Day Counter -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto">
+          <div class="bg-white/15 backdrop-blur-md rounded-2xl p-4 border border-white/20">
+            <span id="days" class="text-3xl sm:text-5xl font-extrabold block">0</span>
+            <span class="text-xs text-pink-200 uppercase font-medium mt-1 block">Hari</span>
+          </div>
+          <div class="bg-white/15 backdrop-blur-md rounded-2xl p-4 border border-white/20">
+            <span id="hours" class="text-3xl sm:text-5xl font-extrabold block">0</span>
+            <span class="text-xs text-pink-200 uppercase font-medium mt-1 block">Jam</span>
+          </div>
+          <div class="bg-white/15 backdrop-blur-md rounded-2xl p-4 border border-white/20">
+            <span id="minutes" class="text-3xl sm:text-5xl font-extrabold block">0</span>
+            <span class="text-xs text-pink-200 uppercase font-medium mt-1 block">Menit</span>
+          </div>
+          <div class="bg-white/15 backdrop-blur-md rounded-2xl p-4 border border-white/20">
+            <span id="seconds" class="text-3xl sm:text-5xl font-extrabold block">0</span>
+            <span class="text-xs text-pink-200 uppercase font-medium mt-1 block">Detik</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BAB 6: SUKA & DUKA -->
+    <section id="bab6" class="scroll-mt-10 bg-white/80 backdrop-blur-lg rounded-3xl p-6 sm:p-10 shadow-xl border border-pink-100">
+      <div class="flex items-center gap-3 text-romantic-600 font-semibold mb-2">
+        <span class="text-sm bg-pink-100 px-3 py-1 rounded-full">Bab 06</span>
+        <i data-lucide="shield-heart" class="w-4 h-4"></i> Saling Menguatkan
+      </div>
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Suka & Duka</h2>
+      <p class="text-gray-600 leading-relaxed">
+        Tidak ada perjalanan yang selalu mulus, namun setiap tantangan yang kita lewati justru membuat hubungan kita semakin kuat. Terima kasih telah bersabar, mau mendengar, dan selalu memegang tanganku di setiap suka maupun duka.
+      </p>
+    </section>
+
+    <!-- BAB 7: HARAPAN BERSAMA -->
+    <section id="bab7" class="scroll-mt-10 bg-white/80 backdrop-blur-lg rounded-3xl p-6 sm:p-10 shadow-xl border border-pink-100">
+      <div class="flex items-center gap-3 text-romantic-600 font-semibold mb-2">
+        <span class="text-sm bg-pink-100 px-3 py-1 rounded-full">Bab 07</span>
+        <i data-lucide="star" class="w-4 h-4"></i> Impian Kita
+      </div>
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Harapan Bersama</h2>
+
+      <div class="space-y-4">
+        <div class="flex items-start gap-4 p-4 rounded-2xl bg-pink-50/50 border border-pink-100">
+          <div class="w-10 h-10 bg-romantic-500 text-white rounded-full flex items-center justify-center shrink-0 shadow-md">
+            <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-gray-800">Terus Bahagia Bersama</h3>
+            <p class="text-sm text-gray-600 mt-1">Semoga kita senantiasa dikelilingi kebahagiaan dan tawa di setiap langkah yang kita tempuh.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 p-4 rounded-2xl bg-pink-50/50 border border-pink-100">
+          <div class="w-10 h-10 bg-romantic-500 text-white rounded-full flex items-center justify-center shrink-0 shadow-md">
+            <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-gray-800">Saling Bertumbuh & Menguatkan</h3>
+            <p class="text-sm text-gray-600 mt-1">Menjadi tempat bersandar satu sama lain saat lelah dan saling mendukung mewujudkan cita-cita.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BAB 8: JANJI MANIS -->
+    <section id="bab8" class="scroll-mt-10 bg-white/80 backdrop-blur-lg rounded-3xl p-6 sm:p-10 shadow-xl border border-pink-100">
+      <div class="flex items-center gap-3 text-romantic-600 font-semibold mb-2">
+        <span class="text-sm bg-pink-100 px-3 py-1 rounded-full">Bab 08</span>
+        <i data-lucide="heart-handshake" class="w-4 h-4"></i> Komitmen
+      </div>
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Janji Manis</h2>
+      <p class="text-gray-600 leading-relaxed font-serif italic text-lg border-l-4 border-romantic-500 pl-4 py-2 bg-pink-50/60 rounded-r-2xl">
+        "Aku berjanji akan selalu berusaha menjadi yang terbaik untukmu, mencintaimu dengan tulus, dan menjaga senyuman di wajahmu setiap hari."
+      </p>
+    </section>
+
+    <!-- BAB 9: UNTUK MASA DEPAN -->
+    <section id="bab9" class="scroll-mt-10 bg-white/90 backdrop-blur-lg rounded-3xl p-8 sm:p-12 shadow-2xl border-2 border-pink-200 text-center space-y-8">
+      <div>
+        <span class="text-sm bg-pink-100 text-romantic-600 font-semibold px-4 py-1.5 rounded-full">Bab 09 • Penutup Masa Depan</span>
+        <h2 class="font-serif text-3xl sm:text-5xl font-bold text-gray-900 mt-4 mb-2">Untuk Masa Depan</h2>
+        <p class="text-gray-600 text-sm sm:text-base max-w-md mx-auto">Melangkah maju bersama menata hari esok yang penuh dengan cinta.</p>
+      </div>
+
+      <!-- Informasi Hari Jadian & Nama Pasangan -->
+      <div class="py-6 px-4 bg-gradient-to-r from-pink-100 via-rose-100 to-pink-100 rounded-2xl border border-pink-200 space-y-3">
+        <div class="inline-flex items-center gap-2 bg-white/80 px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold text-romantic-600 shadow-sm">
+          <i data-lucide="calendar-heart" class="w-4 h-4"></i>
+          <span>Hari Jadian Resmi: 27 Oktober 2026</span>
+        </div>
+        <div class="font-serif text-2xl sm:text-4xl font-extrabold text-gray-900 flex flex-wrap items-center justify-center gap-3">
+          <span class="text-gray-800">Sanubari Hulu</span>
+          <span class="text-romantic-600 text-3xl sm:text-5xl animate-pulse">❤️</span>
+          <span class="glow-pink font-bold">Syakira</span>
+        </div>
+        <p class="font-cursive text-2xl sm:text-3xl text-romantic-600 font-semibold">
+          🤟❤️ I Love You So Much ❤️🤟
+        </p>
+      </div>
+
+      <!-- Tombol Kejutan Konfeti Cinta -->
+      <div class="pt-4 space-y-4">
+        <button onclick="triggerLoveConfetti()" class="inline-flex items-center gap-3 bg-gradient-to-r from-romantic-500 to-pink-600 hover:from-romantic-600 hover:to-pink-700 text-white font-bold text-lg px-10 py-5 rounded-full shadow-xl shadow-romantic-300 hover:scale-105 active:scale-95 transition-all">
+          <i data-lucide="heart" class="w-6 h-6 fill-white"></i>
+          <span>Rayakan Cinta Kita! 🎉</span>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Modal View Full Foto -->
+  <div id="imageLightbox" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4" onclick="closePhotoModal()">
+    <div class="relative max-w-3xl w-full bg-white p-3 sm:p-5 rounded-3xl shadow-2xl border border-pink-100 text-center" onclick="event.stopPropagation()">
+      <button onclick="closePhotoModal()" class="absolute -top-4 -right-4 bg-romantic-500 text-white rounded-full p-2 shadow-lg hover:bg-romantic-600 transition-all">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div class="rounded-2xl overflow-hidden max-h-[75vh] flex items-center justify-center bg-gray-100 mb-4">
+        <img id="lightboxImg" src="" class="max-h-[75vh] w-auto object-contain rounded-xl" />
+      </div>
+      <p id="lightboxCaption" class="font-cursive text-2xl text-romantic-600 font-bold"></p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center py-8 text-xs text-gray-500 relative z-10">
+    <p>Dipersembahkan khusus dari Sanubari Hulu untuk Syakira ❤️</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // 1. Floating Hearts Background
+    function createFloatingHeart() {
+      const container = document.getElementById('heartContainer');
+      const heart = document.createElement('div');
+      heart.classList.add('floating-heart');
+      
+      const icons = ['❤️', '💖', '💕', '🌸', '✨'];
+      heart.innerText = icons[Math.floor(Math.random() * icons.length)];
+      
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 4 + 6) + 's';
+      heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+      
+      container.appendChild(heart);
+      
+      setTimeout(() => {
+        heart.remove();
+      }, 10000);
+    }
+    setInterval(createFloatingHeart, 600);
+
+    // 2. Control Audio Player
+    const bgMusic = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicBtn');
+    const musicText = document.getElementById('musicText');
+    const musicIcon = document.getElementById('musicIcon');
+    let isPlaying = false;
+
+    function toggleMusic() {
+      if (isPlaying) {
+        bgMusic.pause();
+        isPlaying = false;
+        musicText.innerText = 'Putar Musik Romantis';
+        musicIcon.classList.remove('animate-spin');
+        musicIcon.classList.add('animate-pulse');
+      } else {
+        bgMusic.play().then(() => {
+          isPlaying = true;
+          musicText.innerText = 'Matikan Musik';
+          musicIcon.classList.remove('animate-pulse');
+          musicIcon.classList.add('animate-spin');
+        }).catch(err => {
+          console.log("Audio play failed: ", err);
+          alert("Silakan klik area mana saja di layar untuk memutar lagu!");
+        });
+      }
+    }
+
+    // Auto-play audio pada interaksi pertama pengguna jika autoplay terblokir
+    document.body.addEventListener('click', function initAudioOnUserAction() {
+      if (!isPlaying && bgMusic.paused) {
+        // Opsional: jika ingin musik otomatis jalan saat user mengeklik halaman pertama kali
+      }
+    }, { once: true });
+
+    // 3. Card Flip Logic
+    function flipCard(cardWrapper) {
+      const inner = cardWrapper.firstElementChild;
+      inner.classList.toggle('rotate-y-180');
+    }
+
+    // 4. Dynamic Counter
+    const startDate = new Date('2026-10-27T00:00:00');
+
+    function updateCounter() {
+      const now = new Date();
+      const diff = now - startDate;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / 1000 / 60) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById('days').innerText = days >= 0 ? days : 0;
+      document.getElementById('hours').innerText = hours >= 0 ? hours : 0;
+      document.getElementById('minutes').innerText = minutes >= 0 ? minutes : 0;
+      document.getElementById('seconds').innerText = seconds >= 0 ? seconds : 0;
+    }
+    setInterval(updateCounter, 1000);
+    updateCounter();
+
+    // 5. Confetti Love Trigger & Sweet Popup Modal
+    function triggerLoveConfetti() {
+      confetti({
+        particleCount: 140,
+        spread: 100,
+        origin: { y: 0.6 },
+        colors: ['#f43f5e', '#fb7185', '#ffe4e6', '#be123c', '#ff1493']
+      });
+
+      if (document.getElementById('loveModal')) return;
+
+      const popup = document.createElement('div');
+      popup.id = 'loveModal';
+      popup.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm transition-opacity duration-300';
+      
+      popup.innerHTML = `
+        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full text-center space-y-5 shadow-2xl border border-pink-100 transform scale-95 transition-transform duration-300">
+          <div class="w-16 h-16 bg-pink-100 text-romantic-500 rounded-full flex items-center justify-center mx-auto shadow-inner">
+            <i data-lucide="heart-handshake" class="w-8 h-8"></i>
+          </div>
+          <h3 class="font-serif text-2xl font-bold text-gray-900">Aku Sayang Kamu, Syakira! ❤️</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+            Terima kasih telah hadir dan menjadi alasan tersenyumku setiap hari. Semoga perjalanan kita selalu dipenuhi cinta, kehangatan, dan kebahagiaan bersama!
+          </p>
+          <button onclick="closeLoveModal()" class="w-full bg-gradient-to-r from-romantic-500 to-pink-600 hover:from-romantic-600 hover:to-pink-700 text-white font-bold py-3 rounded-xl shadow-md transition-all">
+            Peluk Hangat & Tutup 🤗
+          </button>
+        </div>
+      `;
+
+      document.body.appendChild(popup);
+      lucide.createIcons();
+    }
+
+    function closeLoveModal() {
+      const modal = document.getElementById('loveModal');
+      if (modal) {
+        modal.classList.add('opacity-0');
+        setTimeout(() => modal.remove(), 250);
+      }
+    }
+
+    // 6. Photo Lightbox Modal
+    function openPhotoModal(cardElement) {
+      const img = cardElement.querySelector('img');
+      const caption = cardElement.querySelector('.photo-caption');
+      
+      const lightbox = document.getElementById('imageLightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxCaption = document.getElementById('lightboxCaption');
+      
+      lightboxImg.src = img.src;
+      lightboxCaption.innerText = caption ? caption.innerText : '';
+      
+      lightbox.classList.remove('hidden');
+      lightbox.classList.add('flex');
+    }
+
+    function closePhotoModal() {
+      const lightbox = document.getElementById('imageLightbox');
+      lightbox.classList.remove('flex');
+      lightbox.classList.add('hidden');
+    }
+
+    // 7. Upload Dynamic Photos
+    function uploadUserPhotos(event) {
+      const files = event.target.files;
+      if (!files || files.length === 0) return;
+
+      const gallery = document.getElementById('photoGallery');
+      const angles = ['rotate-[-2deg]', 'rotate-[2deg]', 'rotate-[-1deg]', 'rotate-[3deg]', 'rotate-[-3deg]'];
+
+      Array.from(files).forEach((file, index) => {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const randomAngle = angles[Math.floor(Math.random() * angles.length)];
+          const photoCard = document.createElement('div');
+          photoCard.className = `bg-white p-4 pb-6 rounded-2xl shadow-lg border border-pink-100 ${randomAngle} hover:rotate-0 hover:scale-105 transition-all duration-300 group cursor-pointer`;
+          photoCard.setAttribute('onclick', 'openPhotoModal(this)');
+
+          photoCard.innerHTML = `
+            <div class="relative overflow-hidden rounded-xl aspect-[4/5] bg-pink-100 mb-4">
+              <img src="${e.target.result}" alt="Foto Kenangan" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+              <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <span class="text-white text-xs bg-black/50 px-3 py-1.5 rounded-full backdrop-blur-sm">Lihat Full 🔍</span>
+              </div>
+            </div>
+            <p class="font-cursive text-xl text-center text-gray-800 font-semibold photo-caption">Momen Spesial ❤️</p>
+          `;
+
+          gallery.appendChild(photoCard);
+        }
+        reader.readAsDataURL(file);
+      });
+    }
+  </script>
+</body>
+</html>
+```
